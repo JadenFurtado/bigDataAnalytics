@@ -26,10 +26,6 @@ There are three components of the Hadoop Distributed File System:
     Secondary NameNode: Contains a copy of NameNode’s metadata on disk
     Slave Node: Contains the actual data in the form of blocks
 
-Big Data Hadoop Certification Training Course
-Master Big Data and Hadoop EcosystemExplore Course
-Big Data Hadoop Certification Training Course
-
 ## NameNode
 
 NameNode is the master server. In a non-high availability cluster, there can be only one NameNode. In a high availability cluster, there is a possibility of two NameNodes, and if there are two NameNodes there is no need for a secondary NameNode. 
