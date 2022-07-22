@@ -1,6 +1,8 @@
 # Explain Hadoop Architecture
 Hadoop is a framework permitting the storage of large volumes of data on node systems. The Hadoop architecture  allows parallel processing of data using several components:
 
+![image](https://user-images.githubusercontent.com/52862591/180370824-cda3d6f7-f6a6-4f69-998c-8596a3ef5320.png)
+
     Hadoop HDFS to store data across slave machines
     Hadoop YARN for resource management in the Hadoop cluster
     Hadoop MapReduce to process data in a distributed fashion
@@ -8,6 +10,8 @@ Hadoop is a framework permitting the storage of large volumes of data on node sy
 
 This article lets you understand the various Hadoop components that make the Hadoop architecture.
 Hadoop HDFS
+
+![image](https://user-images.githubusercontent.com/52862591/180370600-a654ce1f-b435-4880-a05a-edd1e0316643.png)
 
 The Hadoop Distributed File System (HDFS) is Hadoop’s storage layer. Housed on multiple servers, data is divided into blocks based on file size. These blocks are then randomly distributed and stored across slave machines.
 
@@ -130,6 +134,9 @@ Following are the components that collectively form a Hadoop ecosystem:
     Zookeeper: Managing cluster
     Oozie: Job Scheduling
 
+![image](https://user-images.githubusercontent.com/52862591/180370404-3f651a86-92b1-4bd3-9c7c-51b22c511e88.png)
+
+
 Note: Apart from the above-mentioned components, there are many other components too that are part of the Hadoop ecosystem. 
 
 All these toolkits or components revolve around one term i.e. Data. That’s the beauty of Hadoop that it revolves around data and hence making its synthesis easier. 
@@ -219,6 +226,8 @@ There are five v's of Big Data that explains the characteristics.
 *    Variety
 *    Value
 *    Velocity
+
+![image](https://user-images.githubusercontent.com/52862591/180370302-e11c8bff-0d65-46a9-8ed7-76c9a07efe34.png)
 
 ## Volume
 
