@@ -1,3 +1,8 @@
+# Assignment 1
+Jaden Furtado
+C21
+1902041
+
 # Explain Hadoop Architecture
 Hadoop is a framework permitting the storage of large volumes of data on node systems. The Hadoop architecture  allows parallel processing of data using several components:
 
@@ -8,9 +13,6 @@ Hadoop is a framework permitting the storage of large volumes of data on node sy
     Hadoop MapReduce to process data in a distributed fashion
     Zookeeper to ensure synchronization across a cluster
 
-This article lets you understand the various Hadoop components that make the Hadoop architecture.
-Hadoop HDFS
-
 ![image](https://user-images.githubusercontent.com/52862591/180370600-a654ce1f-b435-4880-a05a-edd1e0316643.png)
 
 The Hadoop Distributed File System (HDFS) is Hadoop’s storage layer. Housed on multiple servers, data is divided into blocks based on file size. These blocks are then randomly distributed and stored across slave machines.
@@ -20,9 +22,7 @@ HDFS in Hadoop Architecture divides large data into different blocks. Replicated
     Two identical blocks cannot be placed on the same DataNode
     When a cluster is rack aware, all the replicas of a block cannot be placed on the same rack
 
- datanode
-
-In this example, blocks A, B, C, and D are replicated three times and placed on different racks. If DataNode 7 crashes, we still have two copies of block C data on DataNode 4 of Rack 1 and DataNode 9 of Rack 3.
+## Datanode
 
 There are three components of the Hadoop Distributed File System:  
 
@@ -50,8 +50,8 @@ Datanodes
 
 Datanodes store and maintain the blocks. While there is only one namenode, there can be multiple datanodes, which are responsible for retrieving the blocks when requested by the namenode. Datanodes send the block reports to the namenode every 10 seconds; in this way, the namenode receives information about the datanodes stored in its RAM and disk.
 
-Let us now discuss the next component of the Hadoop architecture - Hadoop YARN.
-Hadoop YARN
+
+## Hadoop YARN
 
 Hadoop YARN (Yet Another Resource Negotiator) is the cluster resource management layer of Hadoop and is responsible for resource allocation and job scheduling. Introduced in the Hadoop 2.0 version, YARN is the middle layer between HDFS and MapReduce in the Hadoop architecture. 
 
@@ -104,15 +104,15 @@ The reduce Phase receives the key-value pair from the map phase. The key-value p
 The mapper function handles the input data and runs a function on every input split (known as map tasks). There can be one or multiple map tasks based on the size of the file and the configuration setup. Data is then sorted, shuffled, and moved to the reduce phase, where a reduce function aggregates the data and provides the output.
 MapReduce Job Execution
 
-    The input data is stored in the HDFS and read using an input format. 
-    The file is split into multiple chunks based on the size of the file and the input format. 
-    The default chunk size is 128 MB but can be customized. 
-    The record reader reads the data from the input splits and forwards this information to the mapper. 
-    The mapper breaks the records in every chunk into a list of data elements (or key-value pairs). 
-    The combiner works on the intermediate data created by the map tasks and acts as a mini reducer to reduce the data. 
-    The partitioner decides how many reduce tasks will be required to aggregate the data. 
-    The data is then sorted and shuffled based on their key-value pairs and sent to the reduce function. 
-    Based on the output format decided by the reduce function, the output data is then stored on the HDFS.
+The input data is stored in the HDFS and read using an input format. 
+The file is split into multiple chunks based on the size of the file and the input format. 
+The default chunk size is 128 MB but can be customized. 
+The record reader reads the data from the input splits and forwards this information to the mapper. 
+The mapper breaks the records in every chunk into a list of data elements (or key-value pairs). 
+The combiner works on the intermediate data created by the map tasks and acts as a mini reducer to reduce the data. 
+The partitioner decides how many reduce tasks will be required to aggregate the data. 
+The data is then sorted and shuffled based on their key-value pairs and sent to the reduce function. 
+Based on the output format decided by the reduce function, the output data is then stored on the HDFS.
 
 # Explain Hadoop ecosystem
 
@@ -144,77 +144,74 @@ All these toolkits or components revolve around one term i.e. Data. That’s the
 ## HDFS: 
  
 
-    HDFS is the primary or major component of Hadoop ecosystem and is responsible for storing large data sets of structured or unstructured data across various nodes and thereby maintaining the metadata in the form of log files.
+HDFS is the primary or major component of Hadoop ecosystem and is responsible for storing large data sets of structured or unstructured data across various nodes and thereby maintaining the metadata in the form of log files.
     HDFS consists of two core components i.e. 
         Name node
         Data Node
-    Name Node is the prime node which contains metadata (data about data) requiring comparatively fewer resources than the data nodes that stores the actual data. These data nodes are commodity hardware in the distributed environment. Undoubtedly, making Hadoop cost effective.
-    HDFS maintains all the coordination between the clusters and hardware, thus working at the heart of the system.
+Name Node is the prime node which contains metadata (data about data) requiring comparatively fewer resources than the data nodes that stores the actual data. These data nodes are commodity hardware in the distributed environment. Undoubtedly, making Hadoop cost effective.
+HDFS maintains all the coordination between the clusters and hardware, thus working at the heart of the system.
 
 ## YARN: 
  
 
-    Yet Another Resource Negotiator, as the name implies, YARN is the one who helps to manage the resources across the clusters. In short, it performs scheduling and resource allocation for the Hadoop System.
-    Consists of three major components i.e. 
+Yet Another Resource Negotiator, as the name implies, YARN is the one who helps to manage the resources across the clusters. In short, it performs scheduling and resource allocation for the Hadoop System.
+Consists of three major components i.e. 
         Resource Manager
         Nodes Manager
         Application Manager
-    Resource manager has the privilege of allocating resources for the applications in a system whereas Node managers work on the allocation of resources such as CPU, memory, bandwidth per machine and later on acknowledges the resource manager. Application manager works as an interface between the resource manager and node manager and performs negotiations as per the requirement of the two.
+Resource manager has the privilege of allocating resources for the applications in a system whereas Node managers work on the allocation of resources such as CPU, memory, bandwidth per machine and later on acknowledges the resource manager. Application manager works as an interface between the resource manager and node manager and performs negotiations as per the requirement of the two.
 
-## MapReduce: 
- 
+## MapReduce:  
 
-    By making the use of distributed and parallel algorithms, MapReduce makes it possible to carry over the processing’s logic and helps to write applications which transform big data sets into a manageable one.
-    MapReduce makes the use of two functions i.e. Map() and Reduce() whose task is: 
-        Map() performs sorting and filtering of data and thereby organizing them in the form of group. Map generates a key-value pair based result which is later on processed by the Reduce() method.
-        Reduce(), as the name suggests does the summarization by aggregating the mapped data. In simple, Reduce() takes the output generated by Map() as input and combines those tuples into smaller set of tuples.
+By making the use of distributed and parallel algorithms, MapReduce makes it possible to carry over the processing’s logic and helps to write applications which transform big data sets into a manageable one.
+MapReduce makes the use of two functions i.e. Map() and Reduce() whose task is: 
+Map() performs sorting and filtering of data and thereby organizing them in the form of group. Map generates a key-value pair based result which is later on processed by the Reduce() method.
+Reduce(), as the name suggests does the summarization by aggregating the mapped data. In simple, Reduce() takes the output generated by Map() as input and combines those tuples into smaller set of tuples.
 
 ## PIG: 
 
- Pig was basically developed by Yahoo which works on a pig Latin language, which is Query based language similar to SQL.
+Pig was basically developed by Yahoo which works on a pig Latin language, which is Query based language similar to SQL.
 
-    It is a platform for structuring the data flow, processing and analyzing huge data sets.
-    Pig does the work of executing commands and in the background, all the activities of MapReduce are taken care of. After the processing, pig stores the result in HDFS.
-    Pig Latin language is specially designed for this framework which runs on Pig Runtime. Just the way Java runs on the JVM.
-    Pig helps to achieve ease of programming and optimization and hence is a major segment of the Hadoop Ecosystem.
+It is a platform for structuring the data flow, processing and analyzing huge data sets.
+Pig does the work of executing commands and in the background, all the activities of MapReduce are taken care of. After the processing, pig stores the result in HDFS.
+Pig Latin language is specially designed for this framework which runs on Pig Runtime. Just the way Java runs on the JVM.
+Pig helps to achieve ease of programming and optimization and hence is a major segment of the Hadoop Ecosystem.
 
 ## HIVE: 
  
 
-    With the help of SQL methodology and interface, HIVE performs reading and writing of large data sets. However, its query language is called as HQL (Hive Query Language).
-    It is highly scalable as it allows real-time processing and batch processing both. Also, all the SQL datatypes are supported by Hive thus, making the query processing easier.
-    Similar to the Query Processing frameworks, HIVE too comes with two components: JDBC Drivers and HIVE Command Line.
-    JDBC, along with ODBC drivers work on establishing the data storage permissions and connection whereas HIVE Command line helps in the processing of queries.
+With the help of SQL methodology and interface, HIVE performs reading and writing of large data sets. However, its query language is called as HQL (Hive Query Language).
+It is highly scalable as it allows real-time processing and batch processing both. Also, all the SQL datatypes are supported by Hive thus, making the query processing easier.
+Similar to the Query Processing frameworks, HIVE too comes with two components: JDBC Drivers and HIVE Command Line.
+JDBC, along with ODBC drivers work on establishing the data storage permissions and connection whereas HIVE Command line helps in the processing of queries.
 
 ## Mahout: 
  
 
-    Mahout, allows Machine Learnability to a system or application. Machine Learning, as the name suggests helps the system to develop itself based on some patterns, user/environmental interaction or on the basis of algorithms.
-    It provides various libraries or functionalities such as collaborative filtering, clustering, and classification which are nothing but concepts of Machine learning. It allows invoking algorithms as per our need with the help of its own libraries.
+Mahout, allows Machine Learnability to a system or application. Machine Learning, as the name suggests helps the system to develop itself based on some patterns, user/environmental interaction or on the basis of algorithms.
+It provides various libraries or functionalities such as collaborative filtering, clustering, and classification which are nothing but concepts of Machine learning. It allows invoking algorithms as per our need with the help of its own libraries.
 
 ## Apache Spark: 
  
 
-    It’s a platform that handles all the process consumptive tasks like batch processing, interactive or iterative real-time processing, graph conversions, and visualization, etc.
-    It consumes in memory resources hence, thus being faster than the prior in terms of optimization.
-    Spark is best suited for real-time data whereas Hadoop is best suited for structured data or batch processing, hence both are used in most of the companies interchangeably.
+It’s a platform that handles all the process consumptive tasks like batch processing, interactive or iterative real-time processing, graph conversions, and visualization, etc.
+It consumes in memory resources hence, thus being faster than the prior in terms of optimization.
+Spark is best suited for real-time data whereas Hadoop is best suited for structured data or batch processing, hence both are used in most of the companies interchangeably.
 
 ## Apache HBase: 
  
 
-    It’s a NoSQL database which supports all kinds of data and thus capable of handling anything of Hadoop Database. It provides capabilities of Google’s BigTable, thus able to work on Big Data sets effectively.
-    At times where we need to search or retrieve the occurrences of something small in a huge database, the request must be processed within a short quick span of time. At such times, HBase comes handy as it gives us a tolerant way of storing limited data
+It’s a NoSQL database which supports all kinds of data and thus capable of handling anything of Hadoop Database. It provides capabilities of Google’s BigTable, thus able to work on Big Data sets effectively.
+At times where we need to search or retrieve the occurrences of something small in a huge database, the request must be processed within a short quick span of time. At such times, HBase comes handy as it gives us a tolerant way of storing limited data
 
 Other Components: Apart from all of these, there are some other components too that carry out a huge task in order to make Hadoop capable of processing large datasets. They are as follows: 
 
- 
-
-    Solr, Lucene: These are the two services that perform the task of searching and indexing with the help of some java libraries, especially Lucene is based on Java which allows spell check mechanism, as well. However, Lucene is driven by Solr.
-    Zookeeper: There was a huge issue of management of coordination and synchronization among the resources or the components of Hadoop which resulted in inconsistency, often. Zookeeper overcame all the problems by performing synchronization, inter-component based communication, grouping, and maintenance.
-    Oozie: Oozie simply performs the task of a scheduler, thus scheduling jobs and binding them together as a single unit. There is two kinds of jobs .i.e Oozie workflow and Oozie coordinator jobs. Oozie workflow is the jobs that need to be executed in a sequentially ordered manner whereas Oozie Coordinator jobs are those that are triggered when some data or external stimulus is given to it.
+Solr, Lucene: These are the two services that perform the task of searching and indexing with the help of some java libraries, especially Lucene is based on Java which allows spell check mechanism, as well. However, Lucene is driven by Solr.
+Zookeeper: There was a huge issue of management of coordination and synchronization among the resources or the components of Hadoop which resulted in inconsistency, often. Zookeeper overcame all the problems by performing synchronization, inter-component based communication, grouping, and maintenance.
+Oozie: Oozie simply performs the task of a scheduler, thus scheduling jobs and binding them together as a single unit. There is two kinds of jobs .i.e Oozie workflow and Oozie coordinator jobs. Oozie workflow is the jobs that need to be executed in a sequentially ordered manner whereas Oozie Coordinator jobs are those that are triggered when some data or external stimulus is given to it.
 
 
-# Big Data Characteristics
+# Explain Big Data Characteristics
 
 Big Data contains a large amount of data that is not being processed by traditional data storage or the processing unit. It is used by many multinational companies to process the data and business of many organizations. The data flow would exceed 150 exabytes per day before replication.
 
@@ -241,10 +238,10 @@ Big Data can be structured, unstructured, and semi-structured that are being col
 
 The data is categorized as below:
 
-    Structured data: In Structured schema, along with all the required columns. It is in a tabular form. Structured Data is stored in the relational database management system.
-    Semi-structured: In Semi-structured, the schema is not appropriately defined, e.g., JSON, XML, CSV, TSV, and email. OLTP (Online Transaction Processing) systems are built to work with semi-structured data. It is stored in relations, i.e., tables.
-    Unstructured Data: All the unstructured files, log files, audio files, and image files are included in the unstructured data. Some organizations have much data available, but they did not know how to derive the value of data since the data is raw.
-    Quasi-structured Data:The data format contains textual data with inconsistent data formats that are formatted with effort and time with some tools.
+Structured data: In Structured schema, along with all the required columns. It is in a tabular form. Structured Data is stored in the relational database management system.
+Semi-structured: In Semi-structured, the schema is not appropriately defined, e.g., JSON, XML, CSV, TSV, and email. OLTP (Online Transaction Processing) systems are built to work with semi-structured data. It is stored in relations, i.e., tables.
+Unstructured Data: All the unstructured files, log files, audio files, and image files are included in the unstructured data. Some organizations have much data available, but they did not know how to derive the value of data since the data is raw.
+Quasi-structured Data:The data format contains textual data with inconsistent data formats that are formatted with effort and time with some tools.
 
 Example: Web server logs, i.e., the log file is created and maintained by some server that contains a list of activities.
 ## Veracity
